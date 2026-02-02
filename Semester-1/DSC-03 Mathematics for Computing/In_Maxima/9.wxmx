@@ -1,0 +1,10 @@
+/* Check the diagonalizable property of matrices and find the corresponding eigenvalue and verify the Cayley- Hamilton theorem. */
+
+load("eigen")$;
+mat:entermatrix(4,4);
+poly:expand(charpoly(mat,x));
+Eigenvalues:eigenvalues(mat);
+Eigenvectors:eivects(mat)[2];
+P:determinant(addrow(matrix(Eigenvectors[1][1]),matrix(Eigenvectors[2][1]),matrix(Eigenvectors[2][2]),matrix(Eigenvectors[3][1])));
+if P = 0 then("given matrix is not diagonalizable")
+else ("given matrix is diagonalizable");
