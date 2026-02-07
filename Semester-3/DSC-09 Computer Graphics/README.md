@@ -1,6 +1,6 @@
 # DSC-09: Computer Graphics - Practicals
 
-[![Course](hthttps://github.com/16ratneshkumar/Miscellaneoustps://img.shields.io/badge/Course-DSC--09-blue.svg?style=for-the-badge)](https://www.du.ac.in/)
+![Course](https://img.shields.io/badge/Course-DSC--09-blue.svg?style=for-the-badge)
 
 Welcome to the collection of practical assignments for the **Computer Graphics** course. This repository contains implementations for various Computer Graphics algorithms using C++.
 

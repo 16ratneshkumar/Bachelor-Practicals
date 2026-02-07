@@ -1,6 +1,6 @@
 # GE: Numerical Methods - Practicals
 
-[![Course](https://img.shields.io/badge/Course-GE--Numerical%20Methods-blue.svg?style=for-the-badge)](https://www.du.ac.in/)
+![Course](https://img.shields.io/badge/Course-GE--Numerical%20Methods-blue.svg?style=for-the-badge)
 
 Welcome to the collection of practical assignments for the **Numerical Methods** course. This repository contains implementations for various numerical algorithms using **Wolfram Mathematica**.
 

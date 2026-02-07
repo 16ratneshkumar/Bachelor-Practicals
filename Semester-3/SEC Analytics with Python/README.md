@@ -1,6 +1,6 @@
 # SEC Analytics with Python
 
-[![Course](https://img.shields.io/badge/Course-SEC--Analytics--with--Python-blue.svg?style=for-the-badge)](https://www.du.ac.in/)
+![Course](https://img.shields.io/badge/Course-SEC--Analytics--with--Python-blue.svg?style=for-the-badge)
 
 Welcome to the collection of practical assignments for the **SEC Analytics with Python** course.
 

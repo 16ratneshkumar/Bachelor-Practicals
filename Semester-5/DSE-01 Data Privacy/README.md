@@ -1,6 +1,6 @@
 # DSE-01 Data Privacy
 
-[![Course](https://img.shields.io/badge/Course-DSE--01-blue.svg?style=for-the-badge)](https://www.du.ac.in/)
+![Course](https://img.shields.io/badge/Course-DSE--01-blue.svg?style=for-the-badge)
 
 Welcome to the collection of practical assignments for the **Data Privacy** course.
 

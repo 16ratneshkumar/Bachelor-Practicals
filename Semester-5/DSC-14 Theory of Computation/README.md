@@ -1,6 +1,6 @@
 # DSC-14 Theory of Computation
 
-[![Course](https://img.shields.io/badge/Course-DSC--14-blue.svg?style=for-the-badge)](https://www.du.ac.in/)
+![Course](https://img.shields.io/badge/Course-DSC--14-blue.svg?style=for-the-badge)
 
 Welcome to the collection of practical assignments for the **Theory of Computation** course.
 

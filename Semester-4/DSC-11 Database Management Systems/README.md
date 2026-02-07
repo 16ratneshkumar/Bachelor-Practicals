@@ -1,6 +1,6 @@
 # DSC-11 Database Management Systems
 
-[![Course](https://img.shields.io/badge/Course-DSC--11-blue.svg?style=for-the-badge)](https://www.du.ac.in/)
+![Course](https://img.shields.io/badge/Course-DSC--11-blue.svg?style=for-the-badge)
 
 Welcome to the collection of practical assignments for the **Database Management Systems** course.
 

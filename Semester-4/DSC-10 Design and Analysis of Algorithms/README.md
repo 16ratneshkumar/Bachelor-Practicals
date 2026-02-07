@@ -1,6 +1,6 @@
 # DSC-10 Design and Analysis of Algorithms
 
-[![Course](https://img.shields.io/badge/Course-DSC--10-blue.svg?style=for-the-badge)](https://www.du.ac.in/)
+![Course](https://img.shields.io/badge/Course-DSC--10-blue.svg?style=for-the-badge)
 
 Welcome to the collection of practical assignments for the **Design and Analysis of Algorithms** course.
 

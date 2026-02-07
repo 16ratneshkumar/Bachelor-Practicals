@@ -1,6 +1,6 @@
 # DSC-16: Artificial Intelligence - Practicals
 
-[![Course](https://img.shields.io/badge/Course-DSC--16-blue.svg?style=for-the-badge)](https://www.du.ac.in/)
+![Course](https://img.shields.io/badge/Course-DSC--16-blue.svg?style=for-the-badge)
 
 Welcome to the collection of practical assignments for the **Artificial Intelligence** course. This repository contains implementations for various logic-based problems and algorithms using **Prolog**.
 

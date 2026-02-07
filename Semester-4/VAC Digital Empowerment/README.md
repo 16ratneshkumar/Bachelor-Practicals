@@ -1,6 +1,6 @@
 # VAC Digital Empowerment
 
-[![Course](https://img.shields.io/badge/Course-VAC%20Digital%20Empowerment-blue.svg?style=for-the-badge)](https://www.du.ac.in/)
+![Course](https://img.shields.io/badge/Course-VAC%20Digital%20Empowerment-blue.svg?style=for-the-badge)
 
 Welcome to the collection of Presentation and Assignment for the **VAC Digital Empowerment** course.
 

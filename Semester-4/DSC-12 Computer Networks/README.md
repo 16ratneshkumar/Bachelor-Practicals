@@ -1,6 +1,6 @@
 # DSC-12 Computer Networks
 
-[![Course](https://img.shields.io/badge/Course-DSC--12%20Computer%20Networks-blue.svg?style=for-the-badge)](https://www.du.ac.in/)
+![Course](https://img.shields.io/badge/Course-DSC--12%20Computer%20Networks-blue.svg?style=for-the-badge)
 
 Welcome to the collection of practical assignments for the **Computer Networks** course.
 

@@ -1,6 +1,6 @@
 # SEC: Network Flow - Practicals
 
-[![Course](https://img.shields.io/badge/Course-SEC--Network%20Flow-green.svg?style=for-the-badge)](https://www.du.ac.in/)
+![Course](https://img.shields.io/badge/Course-SEC--Network%20Flow-green.svg?style=for-the-badge)
 
 Welcome to the collection of practical assignments for the **Network Flow** course. This repository contains implementations for various network flow algorithms and problems solved using **Microsoft Excel**.
 

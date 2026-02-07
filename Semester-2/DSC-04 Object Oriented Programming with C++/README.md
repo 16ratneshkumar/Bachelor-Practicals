@@ -1,6 +1,6 @@
 # DSC-04: Object Oriented Programming with C++ - Practicals
 
-[![Course](https://img.shields.io/badge/Course-DSC--04-blue.svg?style=for-the-badge)](https://www.du.ac.in/)
+![Course](https://img.shields.io/badge/Course-DSC--04-blue.svg?style=for-the-badge)
 
 Welcome to the collection of practical assignments for the **Object Oriented Programming with C++** course. This repository contains implementations for various C++ programming concepts.
 

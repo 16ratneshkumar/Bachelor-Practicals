@@ -1,6 +1,6 @@
 # DSC-01: Programming using Python - Practicals
 
-[![Course](https://img.shields.io/badge/Course-DSC--01-blue.svg?style=for-the-badge)](https://www.du.ac.in/)
+![Course](https://img.shields.io/badge/Course-DSC--01-blue.svg?style=for-the-badge)
 
 Welcome to the collection of practical assignments for the **Programming using Python** course. This repository contains implementations for both the 2023-24 session and the 2024 onwards curriculum.
 

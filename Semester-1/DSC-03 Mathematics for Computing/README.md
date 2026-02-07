@@ -1,6 +1,6 @@
 # DSC-03: Mathematics For Computing - Practicals
 
-[![Course](https://img.shields.io/badge/Course-DSC--03-green.svg?style=for-the-badge)](https://www.du.ac.in/)
+![Course](https://img.shields.io/badge/Course-DSC--03-green.svg?style=for-the-badge)
 
 Welcome to the collection of practical assignments for the **Mathematics For Computing** course. This repository contains implementations in both **Maxima** and **Python**.
 

@@ -1,6 +1,6 @@
 # DSC-08: Operating System - Practicals
 
-[![Course](https://img.shields.io/badge/Course-DSC--08-blue.svg?style=for-the-badge)](https://www.du.ac.in/)
+![Course](https://img.shields.io/badge/Course-DSC--08-blue.svg?style=for-the-badge)
 
 Welcome to the collection of practical assignments for the **Operating System** course. This repository contains implementations in **C++**, **Python**, and **Rust**.
 

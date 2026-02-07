@@ -1,6 +1,6 @@
 # DSC-05: Discrete Mathematical Structures - Practicals
 
-[![Course](https://img.shields.io/badge/Course-DSC--05-blue.svg?style=for-the-badge)](https://www.du.ac.in/)
+![Course](https://img.shields.io/badge/Course-DSC--05-blue.svg?style=for-the-badge)
 
 Welcome to the collection of practical assignments for the **Discrete Mathematical Structures** course.
 
