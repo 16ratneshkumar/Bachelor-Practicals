@@ -1,0 +1,27 @@
+Semester-1:
+  - changed-files:
+    - any-glob-to-any-file: 'Semester-1/**/*'
+Semester-2:
+  - changed-files:
+    - any-glob-to-any-file: 'Semester-2/**/*'
+Semester-3:
+  - changed-files:
+    - any-glob-to-any-file: 'Semester-3/**/*'
+Semester-4:
+  - changed-files:
+    - any-glob-to-any-file: 'Semester-4/**/*'
+Semester-5:
+  - changed-files:
+    - any-glob-to-any-file: 'Semester-5/**/*'
+Semester-6:
+  - changed-files:
+    - any-glob-to-any-file: 'Semester-6/**/*'
+Semester-7:
+  - changed-files:
+    - any-glob-to-any-file: 'Semester-7/**/*'
+Semester-8:
+  - changed-files:
+    - any-glob-to-any-file: 'Semester-8/**/*'
+Documentation:
+  - changed-files:
+    - any-glob-to-any-file: ['*.md', '.github/**/*']
