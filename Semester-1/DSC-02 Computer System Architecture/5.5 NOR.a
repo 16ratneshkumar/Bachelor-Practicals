@@ -1,0 +1,11 @@
+START:  INP
+        CMA
+        STA NUM1
+        INP
+        CMA
+        AND NUM1
+
+        OUT
+        HLT
+
+NUM1:   .data 1 0

@@ -1,0 +1,7 @@
+START:  LDA NUM
+        STA LOC1
+        OUT
+        HLT
+
+NUM:    .data 1 10
+LOC1:   .data 1 5

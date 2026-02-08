@@ -1,0 +1,10 @@
+START:  LDA VAL
+        SNA
+        HLT
+        OUT
+        LDA RESULT
+        OUT
+        HLT
+
+VAL:    .data 1 -10
+RESULT: .data 1 5

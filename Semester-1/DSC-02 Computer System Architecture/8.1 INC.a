@@ -1,0 +1,5 @@
+START:  LDA VAL
+        INC
+        OUT
+        HLT
+VAL:    .data 1 123

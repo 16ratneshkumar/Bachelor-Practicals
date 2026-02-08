@@ -1,0 +1,12 @@
+START:  LDA NUM1
+        ADD NUM2
+        BUN SKIP
+        LDA NUM3
+        STA RESULT
+SKIP:   OUT
+        HLT
+
+NUM1:   .data 1 10
+NUM2:   .data 1 5
+NUM3:   .data 1 7
+RESULT: .data 1 0

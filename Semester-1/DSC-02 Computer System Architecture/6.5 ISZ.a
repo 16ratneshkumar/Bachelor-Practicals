@@ -1,0 +1,14 @@
+START:  CLA
+        STA SUM
+LOOP:   LDA SUM
+        ADD VALUE
+        STA SUM
+        ISZ CTR
+        BUN LOOP
+        LDA SUM
+        OUT
+        HLT
+
+SUM:    .data 1 0
+VALUE:  .data 1 5
+CTR:    .data 1 -4

@@ -1,0 +1,6 @@
+START:  LDA VAL
+        OUT
+        CIR
+        OUT
+        HLT
+VAL:    .data 1 8

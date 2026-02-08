@@ -1,0 +1,12 @@
+START: INP 
+       SZA            
+       BUN DONE
+       ADD SUM
+       STA SUM
+       BUN START
+
+DONE:  LDA SUM     
+       OUT   
+       HLT    
+
+SUM:   .data 1 0

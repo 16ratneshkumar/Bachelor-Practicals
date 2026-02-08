@@ -1,0 +1,8 @@
+START:  CLE
+        SZE
+        HLT
+        LDA RESULT
+        OUT
+        HLT
+
+RESULT: .data 1 5
