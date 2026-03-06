@@ -20,13 +20,10 @@ def First_Fit(No_of_Frames,memory,process):
 
 def Best_Fit(No_of_Frames,memory,process):
     Flag = None
-    for frames in range(1,No_of_Frames):
-        if memory[frames][0] == "free" and memory[frames][1]>= process[1] and memory[frames][1] < memory[Flag][1]:
-            if flag is not None:
-                if memory[Flag][1]>= process[1]:
-                    Flag = frames
-            else:
-                flag =frames
+    for frames in range(No_of_Frames):
+        if memory[frames][0] == "free" and memory[frames][1] >= process[1]:
+            if Flag is None or memory[frames][1] < memory[Flag][1]:
+                Flag = frames
     if Flag is not None:
         memory[Flag][0] = process[0]
         Display(memory)
@@ -35,13 +32,10 @@ def Best_Fit(No_of_Frames,memory,process):
         
 def Worst_Fit(No_of_Frames,memory,process):
     Flag = None
-    for frames in range(1,No_of_Frames):
-        if memory[frames][0] == "free" and memory[frames][1]>= process[1] and memory[frames][1] > memory[Flag][1]:
-            if flag is not None:
-                if memory[Flag][1]>= process[1]:
-                    Flag = frames
-            else:
-                flag =frames
+    for frames in range(No_of_Frames):
+        if memory[frames][0] == "free" and memory[frames][1] >= process[1]:
+            if Flag is None or memory[frames][1] > memory[Flag][1]:
+                Flag = frames
 
     if Flag is not None:
         memory[Flag][0] = process[0]
