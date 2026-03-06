@@ -1,0 +1,51 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+}
+\begin{document}
+\begin{center}
+  {\Large Equations}\\[0.8em]
+  Prof.\ Naveen Kumar$^1$, Dr.\ Neeraj Kumar Sharma$^2$, and Sakeena Shahid$^3$\\[0.5em]
+  {\small
+    $^1$Department of Computer Science, University of Delhi\\
+    $^2$Ram Lal Anand College, University of Delhi\\
+    $^3$SGTB Khalsa College, University of Delhi
+  }\\[0.5em]
+    \vspace{1em}
+  November 15, 2022
+\end{center}
+
+
+\section{Maxwell's Equations}
+``Maxwell's equations" are named for James Clark Maxwell and are as follow:
+
+\begin{align}
+  \vec{\nabla} \cdot \vec{E}  &= \frac{\rho}{\epsilon_0}
+      & &\text{Gauss's Law} \label{eq:gauss} \\
+  \vec{\nabla} \cdot \vec{B}  &= 0
+      & &\text{Gauss's Law for Magnetism} \label{eq:gaussmag} \\
+  \vec{\nabla} \times \vec{E} &= -\frac{\partial\vec{B}}{\partial t}
+      & &\text{Faraday's Law of Induction} \label{eq:faraday} \\
+  \vec{\nabla} \times \vec{B} &= \mu_0\!\left(\epsilon_0
+      \frac{\partial\vec{E}}{\partial t}+\vec{J}\right)
+      & &\text{Ampere's Circuital Law} \label{eq:ampere}
+\end{align}
+
+Equations \ref{eq:gauss}, \ref{eq:gaussmag}, \ref{eq:faraday}, and \ref{eq:ampere} are some of the most important in Physics.
+
+\section{Matrix Equations}
+$$
+  \begin{pmatrix}
+    a_{11} & a_{12} & \cdots & a_{1n} \\
+    a_{21} & a_{22} & \cdots & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{n1} & a_{n2} & \cdots & a_{nn}
+  \end{pmatrix}
+  \begin{bmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{bmatrix}
+  =
+  \begin{matrix} w_1 \\ w_2 \\ \vdots \\ w_n \end{matrix}
+$$
+\end{document}

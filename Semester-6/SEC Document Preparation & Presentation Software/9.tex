@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\title{ }
+\author{ }
+\date{ }
+
+\begin{document}
+
+\maketitle
+
+\section*{}
+\addcontentsline{toc}{section}{Table of contents}
+
+% Table of Contents
+\tableofcontents
+% List of Tables
+\listoftables
+% List of Figures
+\listoffigures
+
+
+\newpage
+\section{First Section}
+This document demonstrates the automatic generation of table of contents, list of figures, and list of tables.
+
+\section{Second Section}
+
+
+\begin{table}[h]
+\centering
+\caption{Just a table}
+\begin{tabular}{|l|c|}
+\hline
+Parameter & Value \\
+\hline
+Test 1 & 95.5 \\
+Test 2 & 87.3 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{result1.png}
+\caption{This is an image}
+\label{fig:res1}
+\end{figure}
+
+\end{document}

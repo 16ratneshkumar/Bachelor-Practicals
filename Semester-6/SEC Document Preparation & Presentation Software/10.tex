@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage[numbers]{natbib}
+\usepackage{url}
+\begin{document}
+This document is an example of \texttt{natbib} package used in bibliography
+management.  Three items are cited: \textit{The \LaTeX{} Companion} book
+\citep{goossens1993}, the Einstein journal paper \citep{einstein1905}, and the
+Donald Knuth's website \citep{knuth_web}.  The \LaTeX{} related items are
+\citep{goossens1993, knuth_web}.
+\bibliographystyle{plain}
+\begin{thebibliography}{9}
+
+\bibitem{einstein1905}
+A.~Einstein.
+\newblock Zur Elektrodynamik bewegter K{\"o}rper. (German) [On the
+  electrodynamics of moving bodies].
+\newblock \textit{Annalen der Physik}, 322(10):891--921, 1905.
+\newblock doi: \url{http://dx.doi.org/10.1002/andp.19053221004}.
+
+\bibitem{goossens1993}
+M.~Goossens, F.~Mittelbach, and A.~Samarin.
+\newblock \textit{The \LaTeX{} Companion}.
+\newblock Addison-Wesley, Reading, Massachusetts, 1993.
+
+\bibitem{knuth_web}
+D.~Knuth.
+\newblock Knuth: Computers and typesetting.
+\newblock URL \url{http://www-cs-faculty.stanford.edu/~uno/abcde.html}.
+
+\end{thebibliography}
+\end{document}

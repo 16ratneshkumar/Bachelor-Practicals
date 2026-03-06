@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\begin{document}
+
+\begin{figure}[h]
+\centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \fbox{\rule{0pt}{5cm}\rule{5cm}{0pt}}  % placeholder (replace with \includegraphics)
+    \caption{Subfigure 1 caption}
+    \label{fig:sub1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \fbox{\rule{0pt}{5cm}\rule{5cm}{0pt}}
+    \caption{Subfigure 2 caption}
+    \label{fig:sub2}
+  \end{subfigure}
+
+  \vspace{1em}
+
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \fbox{\rule{0pt}{5cm}\rule{5cm}{0pt}}
+    \caption{Subfigure 3 caption}
+    \label{fig:sub3}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \fbox{\rule{0pt}{5cm}\rule{5cm}{0pt}}
+    \caption{Subfigure 4 caption}
+    \label{fig:sub4}
+  \end{subfigure}
+
+\caption{This is a figure containing several subfigures.}
+\label{fig:subfigs}
+\end{figure}
+
+In the text, you can refer to subfigures of Figure~\ref{fig:subfigs}
+as \ref{fig:sub1}, \ref{fig:sub2}, \ref{fig:sub3}, and \ref{fig:sub4},
+and to the sub-index as (a), (b), (c) and (d).
+\end{document}

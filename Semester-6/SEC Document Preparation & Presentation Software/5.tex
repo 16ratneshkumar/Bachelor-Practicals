@@ -1,0 +1,41 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{xcolor}
+
+\newcommand{\commentstyle}[1]{\color{blue}\textit{#1}}
+\SetCommentSty{commentstyle}
+\DontPrintSemicolon
+\LinesNumbered
+
+\SetKwInput{KwInput}{Input}
+\SetKwInput{KwOutput}{Output}
+\SetKwInput{KwData}{Data}
+
+\begin{document}
+\begin{algorithm}
+    \caption{Example code}
+    \KwInput{Your Input} 
+    \KwOutput{Your output}
+    \KwData{Testing set $x$}
+    $\sum_{i=1}^{\infty} := 0$
+    \tcp*[r]{this is a comment} 
+    \tcc{Now this is an if ...else conditioal loop}
+    \If{Condition 1}{
+        Do something \tcp*[r]{this is another comment}
+        \If{sub-Condition}{
+        Do a lot }}
+    \ElseIf{Condition 2}{
+        Do Otherwise
+
+        \tcc{Now this is a for loop}
+        \For{sequence}{
+            loop instructions }}
+    \Else{
+        Do the rest
+    }
+    \tcc{Now this is a While loop}
+    \While{Condition}{
+        Do something
+    }
+\end{algorithm}
+\end{document}
