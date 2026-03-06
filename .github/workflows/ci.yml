@@ -30,11 +30,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Install MinGW for Graphics Library
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y g++-mingw-w64-i686
     - name: Check C++ Compilation
       run: |
+        # Path to the custom graphics library
+        LIB_PATH="Semester-3/DSC-09 Computer Graphics/Library Setup/Packages"
+        
         # Find all .cpp and .c files and try to compile them (just checking syntax)
         # Using -fsyntax-only to speed up and avoid generating binaries
         find . -name "*.cpp" -o -name "*.c" | while read -r file; do
           echo "Checking $file..."
-          g++ -fsyntax-only "$file" || exit 1
+          if grep -q "#include <graphics.h>" "$file"; then
+            echo "Using MinGW for graphics library check..."
+            # Using -I to point to the custom library folder
+            i686-w64-mingw32-g++ -fsyntax-only -I"$LIB_PATH" "$file" || exit 1
+          else
+            g++ -fsyntax-only "$file" || exit 1
+          fi
         done
