@@ -143,7 +143,7 @@ memb(X, [_|T]) :- memb(X, T).
 ```
 
 
-11. SUM OF LIST - sumlist(L, S)
+#### 11. SUM OF LIST - sumlist(L, S)
 ```pl
 sumlist([], 0).
 
