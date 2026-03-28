@@ -19,7 +19,7 @@ conc([a,b,c], [d,e], L).
 #### 3. REVERSE:
 ```
 reverse([1,2,3,4], R).
-reverse_tail([a,b,c,d,e], R).
+reverse([a,b,c,d,e], R).
 ```
 
 #### 4. SUM:
@@ -37,13 +37,13 @@ max(10, 15, M).
 #### 6. FACTORIAL:
 ```
 factorial(5, F).
-factorial_tail(6, F).
+factorial(6, F).
 ```
 
 #### 7. FIBONACCI:
 ```
 generate_fib(7, T).
-fib_tail(10, T).
+generate_fib(10, T).
 ```
 
 #### 8. POWER:
@@ -57,7 +57,7 @@ power(2, -2, Ans).
 ```
 multi(3, 4, R).
 multi(-3, 4, R).
-multi_simple(7, 8, R).
+multi(7, 8, R).
 ```
 
 #### 10. MEMBERSHIP:
@@ -69,7 +69,7 @@ memb(5, [1,2,3,4]).
 #### 11. SUM LIST:
 ```
 sumlist([1,2,3,4,5], S).
-sumlist_tail([10,20,30], S).
+sumlist([10,20,30], S).
 ```
 
 #### 12. EVEN/ODD LENGTH:
@@ -82,7 +82,7 @@ evenlength([a,b]).
 #### 13. MAX LIST:
 ```
 maxlist([3,7,2,9,1], M).
-maxlist_alt([5,2,8,1,9,3], M).
+maxlist([5,2,8,1,9,3], M).
 ```
 
 #### 14. INSERT:
