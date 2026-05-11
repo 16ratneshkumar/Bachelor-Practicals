@@ -15,11 +15,11 @@ For [i=1, i <= Nmax, i++,
 		Print["Estimated error in ",i," th iteration is : ",(x1 - x0)/2];
 	If[f[m]* f[x1] > 0, x1 = m, x0 = m]]];
 	Print["Root is: ",m]
-	Print["Estimated error in", i," th iteration is : ",(x1 - x0)/2]]
+	Print["Estimated error in", i," th iteration is : ",(x1 - x0)/2]
 	Plot[f[x],{x,-1,3},
 	PlotRange -> {-1,1},
 	PlotStyle -> {Red, Thick}, 
-	PlotLabel -> "f[x] = "f [x], 
+	PlotLabel -> "f[x] = " <> ToString[f[x]], 
 	AxesLabel -> {x,f[x]}]
 ```
 
