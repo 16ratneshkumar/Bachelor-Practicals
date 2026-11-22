@@ -1,0 +1,33 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+texput.log
+
+# Lex & Yacc generated files
+lex.yy.c
+y.tab.c
+y.tab.h
+y.output
+
+# Compiled binaries and object files
+*.exe
+*.o
+*.obj
+a.out
+
+# Temporary and editor files
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.tmp
+logo_extract-*.png
