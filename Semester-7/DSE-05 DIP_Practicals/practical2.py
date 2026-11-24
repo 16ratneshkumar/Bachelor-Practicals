@@ -11,9 +11,12 @@ import os
 
 os.makedirs("result/program2", exist_ok=True)
 
-# Generate synthetic image
-img = np.linspace(0, 255, 256, dtype=np.uint8).reshape(16, 16)
-img = cv2.resize(img, (256, 256), interpolation=cv2.INTER_NEAREST)
+# Load input image
+img = cv2.imread("result/input.png", 0)  # Load as grayscale
+if img is None:
+    # Fallback: Generate synthetic image
+    img = np.linspace(0, 255, 256, dtype=np.uint8).reshape(16, 16)
+    img = cv2.resize(img, (256, 256), interpolation=cv2.INTER_NEAREST)
 cv2.imwrite("result/program2/original.jpg", img)
 
 # a. Negative image

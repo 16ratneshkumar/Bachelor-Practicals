@@ -24,7 +24,7 @@ translated = cv2.warpAffine(img, M, (w, h))
 cv2.imwrite("result/program6/translated.jpg", translated)
 
 # b. Scaling
-scaled = cv2.resize(img, None, fx=1.5, fy=1.5, interpolation=cv2.INTER_LINEAR)
+scaled = cv2.resize(img, None, fx=2.5, fy=1.5, interpolation=cv2.INTER_LINEAR)
 cv2.imwrite("result/program6/scaled.jpg", scaled)
 
 # c. Rotation
@@ -37,7 +37,7 @@ shrunk = cv2.resize(img, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
 cv2.imwrite("result/program6/shrunk.jpg", shrunk)
 
 # e. Zooming
-zoomed = cv2.resize(img, None, fx=2.0, fy=2.0, interpolation=cv2.INTER_CUBIC)
+zoomed = cv2.resize(img, None, fx=3.0, fy=3.0, interpolation=cv2.INTER_CUBIC)
 cv2.imwrite("result/program6/zoomed.jpg", zoomed)
 
 print("All outputs saved to result/program6/")

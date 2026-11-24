@@ -87,9 +87,9 @@
 
 \begin{tabular}{p{0.60\textwidth} p{0.48\textwidth}}
 {\large\bfseries Submitted By:} & {\large\bfseries Submitted To:} \\[6pt]
-{\large\bfseries $\sim$Ratnesh Kumar} & {\large\bfseries $\sim$ Dr. Arun Aggarwal} \\[3pt]
+{\large\bfseries $\sim$ Ratnesh Kumar} & {\large\bfseries $\sim$ Dr. Arun Aggarwal} \\[3pt]
 {\large\bfseries 20231432 (23020570034)} & {\large\bfseries Assistant Professor} \\[3pt]
-{\large\bfseries B.Sc.\ (Hons.) CS / VII} & {\large\bfseries Department of Computer Science} \\
+{\large\bfseries B.Sc.\ (Hons.) Computer Science} & {\large\bfseries Department of Computer Science} \\
 \end{tabular}
 
 \end{titlepage}
@@ -213,13 +213,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-# Create result directory
 os.makedirs("result/program1", exist_ok=True)
 
-# Generate a sample image
-img = np.zeros((300, 300, 3), dtype=np.uint8)
-img[50:250, 50:250] = [0, 0, 255]  # Blue square
-img[100:200, 100:200] = [0, 255, 0]  # Green square
+# Load input image
+img = cv2.imread("result/input.png")
+if img is None:
+    img = np.zeros((300, 300, 3), dtype=np.uint8)
+    img[50:250, 50:250] = [0, 0, 255]
+    img[100:200, 100:200] = [0, 255, 0]
 cv2.imwrite("result/program1/input.jpg", img)
 
 # a. Read and display image
@@ -229,34 +230,33 @@ img = cv2.imread("result/program1/input.jpg")
 resized = cv2.resize(img, (150, 150))
 cv2.imwrite("result/program1/resized.jpg", resized)
 
-# c. Convert a given color image into a corresponding gray-scale image
+# c. Convert to grayscale
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 cv2.imwrite("result/program1/grayscale.jpg", gray)
 
-# d. Convert a given color/gray-scale image into black & white image
+# d. Black & white image and image profile
 _, bw = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
 cv2.imwrite("result/program1/black_white.jpg", bw)
 
-# Image profile
 row_profile = gray.mean(axis=1)
 col_profile = gray.mean(axis=0)
 
-# e. Separate a given color image into three R, G & B planes
+# e. Separate R, G, B planes
 b, g, r = cv2.split(img)
 cv2.imwrite("result/program1/b_plane.jpg", b)
 cv2.imwrite("result/program1/g_plane.jpg", g)
 cv2.imwrite("result/program1/r_plane.jpg", r)
 
-# f. Create a color image using separate three R, G and B planes
+# f. Create color image from R, G, B planes
 merged = cv2.merge((b, g, r))
 cv2.imwrite("result/program1/merged_rgb.jpg", merged)
 
-# g. Write given 2-D data in image file
+# g. Write 2-D data to image file
 cv2.imwrite("result/program1/output_2d.jpg", gray)
 
 plt.plot(row_profile, label='Row profile')
 plt.plot(col_profile, label='Column profile')
-plt.title('d. Image profile')
+plt.title('Image Profile')
 plt.xlabel('Index')
 plt.ylabel('Mean intensity')
 plt.legend()
@@ -345,9 +345,11 @@ import os
 
 os.makedirs("result/program2", exist_ok=True)
 
-# Generate synthetic image
-img = np.linspace(0, 255, 256, dtype=np.uint8).reshape(16, 16)
-img = cv2.resize(img, (256, 256), interpolation=cv2.INTER_NEAREST)
+# Load input image
+img = cv2.imread("result/input.png", 0)
+if img is None:
+    img = np.linspace(0, 255, 256, dtype=np.uint8).reshape(16, 16)
+    img = cv2.resize(img, (256, 256), interpolation=cv2.INTER_NEAREST)
 cv2.imwrite("result/program2/original.jpg", img)
 
 # a. Negative image
@@ -355,9 +357,9 @@ negative = 255 - img
 cv2.imwrite("result/program2/negative.jpg", negative)
 
 # b. Flip image
-hor_flipped = cv2.flip(img, 1)  # horizontal flip
+hor_flipped = cv2.flip(img, 1)
 cv2.imwrite("result/program2/horizontal_flipped.jpg", hor_flipped)
-ver_flipped = cv2.flip(img, 0)  # vertical flip
+ver_flipped = cv2.flip(img, 0)
 cv2.imwrite("result/program2/vertical_flipped.jpg", ver_flipped)
 
 # c. Thresholding
@@ -392,7 +394,7 @@ print("All outputs saved to result/program2/")
   \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program2/horizontal_flipped.jpg}
   \caption{Horizontal Flipped}
 \end{subfigure}
-\vspace{6pt}
+\vspace{2pt}
 
 \begin{subfigure}[b]{0.31\textwidth}
   \centering
@@ -455,8 +457,6 @@ with open("result/program3/mean_values.txt", "w") as f:
     f.write(f"Mean of image2: {mean2}\n")
 
 # d. Different brightness by changing mean value
-# Use calculated mean values (mean1, mean2) to adjust brightness
-# Brighten img1 by adding mean2, darken by subtracting mean2
 brightened = cv2.add(img1, int(mean2))
 darkened = cv2.subtract(img1, int(mean2))
 
@@ -544,19 +544,19 @@ cv2.circle(img2, (100, 100), 50, 255, -1)
 cv2.imwrite("result/program4/image1.jpg", img1)
 cv2.imwrite("result/program4/image2.jpg", img2)
 
-# a. AND operation between two images
+# a. AND operation
 and_img = cv2.bitwise_and(img1, img2)
 cv2.imwrite("result/program4/and.jpg", and_img)
 
-# b. OR operation between two images
+# b. OR operation
 or_img = cv2.bitwise_or(img1, img2)
 cv2.imwrite("result/program4/or.jpg", or_img)
 
-# c. Calculate intersection of two images
+# c. Intersection of two images
 intersection = cv2.bitwise_and(img1, img2)
 cv2.imwrite("result/program4/intersection.jpg", intersection)
 
-# d. Water marking using X-OR operation
+# d. Watermarking using XOR
 logo = np.zeros((200, 200), dtype=np.uint8)
 cv2.putText(logo, "DIP", (40, 110), cv2.FONT_HERSHEY_SIMPLEX, 1.5, 255, 3)
 watermarked = cv2.bitwise_xor(img1, logo)
@@ -565,7 +565,7 @@ cv2.imwrite("result/program4/logo.jpg", logo)
 cv2.imwrite("result/program4/watermarked_xor.jpg", watermarked)
 cv2.imwrite("result/program4/extracted_xor.jpg", extracted)
 
-# e. NOT operation (negative image)
+# e. NOT operation (negative)
 not_img1 = cv2.bitwise_not(img1)
 cv2.imwrite("result/program4/not_image1.jpg", not_img1)
 
@@ -641,13 +641,16 @@ print("All outputs saved to result/program4/")
 import cv2
 import numpy as np
 import os
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
 os.makedirs("result/program5", exist_ok=True)
 
 # Load image
-img = cv2.imread("input.jpg")
+img = cv2.imread("result/input.png")
 if img is None:
-    for p in ["result/program5/input_ref.jpg", "result/program7/input_ref.jpg", "result/program1/input.jpg"]:
+    for p in ["input.jpg", "result/program1/input.jpg", "result/program5/input_ref.jpg", "result/program7/input_ref.jpg"]:
         img = cv2.imread(p)
         if img is not None:
             break
@@ -659,11 +662,11 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 cv2.imwrite("result/program5/input_img.jpg", gray)
 cv2.imwrite("result/program5/grayscale.jpg", gray)
 
-# a
+# a. Using inbuilt function
 eq_builtin = cv2.equalizeHist(gray)
 cv2.imwrite("result/program5/equalized_builtin.jpg", eq_builtin)
 
-# b
+# b. Without using inbuilt function
 cdf = cv2.calcHist([gray], [0], None, [256], [0, 256]).flatten().cumsum()
 cdf_min = cdf[cdf != 0].min() if np.any(cdf != 0) else 0
 cdf_max = cdf[-1]
@@ -676,6 +679,30 @@ else:
 img_eq_manual = lut[gray]
 cv2.imwrite("result/program5/equalized_manual.jpg", img_eq_manual)
 
+# Plot equalization calculation graphs
+hist_original = cv2.calcHist([gray], [0], None, [256], [0, 256]).flatten()
+hist_equalized = cv2.calcHist([img_eq_manual], [0], None, [256], [0, 256]).flatten()
+
+fig, ax = plt.subplots(figsize=(6, 5))
+ax.plot(hist_original, color='black')
+ax.set_title('Original Histogram')
+ax.set_xlabel('Pixel Intensity')
+ax.set_ylabel('Frequency')
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.savefig("result/program5/original_histogram.png")
+plt.close()
+
+fig, ax = plt.subplots(figsize=(6, 5))
+ax.plot(hist_equalized, color='purple')
+ax.set_title('Equalized Histogram (Manual)')
+ax.set_xlabel('Pixel Intensity')
+ax.set_ylabel('Frequency')
+ax.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.savefig("result/program5/equalized_histogram.png")
+plt.close()
+
 print("All outputs saved to result/program5/")
 \end{lstlisting}
 
@@ -684,24 +711,36 @@ print("All outputs saved to result/program5/")
 
 \begin{figure}[H]
 \centering
-\begin{subfigure}[b]{0.24\textwidth}
+\begin{subfigure}[b]{0.31\textwidth}
   \centering
-  \includegraphics[width=\textwidth,height=3cm,keepaspectratio]{result/program5/input_img.jpg}
+  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program5/input_img.jpg}
   \caption{Input Image}
 \end{subfigure}\hfill
-\begin{subfigure}[b]{0.24\textwidth}
+\begin{subfigure}[b]{0.31\textwidth}
   \centering
-  \includegraphics[width=\textwidth,height=3cm,keepaspectratio]{result/program5/grayscale.jpg}
+  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program5/grayscale.jpg}
   \caption{Grayscale Image}
 \end{subfigure}\hfill
-\begin{subfigure}[b]{0.24\textwidth}
+\begin{subfigure}[b]{0.31\textwidth}
   \centering
-  \includegraphics[width=\textwidth,height=3cm,keepaspectratio]{result/program5/equalized_builtin.jpg}
+  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program5/original_histogram.png}
+  \caption{Original Histogram}
+\end{subfigure}
+\vspace{6pt}
+
+\begin{subfigure}[b]{0.31\textwidth}
+  \centering
+  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program5/equalized_histogram.png}
+  \caption{Equalized Histogram (Manual)}
+\end{subfigure}\hfill
+\begin{subfigure}[b]{0.31\textwidth}
+  \centering
+  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program5/equalized_builtin.jpg}
   \caption{Equalized (Built-in)}
 \end{subfigure}\hfill
-\begin{subfigure}[b]{0.24\textwidth}
+\begin{subfigure}[b]{0.31\textwidth}
   \centering
-  \includegraphics[width=\textwidth,height=3cm,keepaspectratio]{result/program5/equalized_manual.jpg}
+  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program5/equalized_manual.jpg}
   \caption{Equalized (Manual)}
 \end{subfigure}
 \end{figure}
@@ -734,7 +773,7 @@ translated = cv2.warpAffine(img, M, (w, h))
 cv2.imwrite("result/program6/translated.jpg", translated)
 
 # b. Scaling
-scaled = cv2.resize(img, None, fx=1.5, fy=1.5, interpolation=cv2.INTER_LINEAR)
+scaled = cv2.resize(img, None, fx=2.5, fy=1.5, interpolation=cv2.INTER_LINEAR)
 cv2.imwrite("result/program6/scaled.jpg", scaled)
 
 # c. Rotation
@@ -747,7 +786,7 @@ shrunk = cv2.resize(img, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
 cv2.imwrite("result/program6/shrunk.jpg", shrunk)
 
 # e. Zooming
-zoomed = cv2.resize(img, None, fx=2.0, fy=2.0, interpolation=cv2.INTER_CUBIC)
+zoomed = cv2.resize(img, None, fx=3.0, fy=3.0, interpolation=cv2.INTER_CUBIC)
 cv2.imwrite("result/program6/zoomed.jpg", zoomed)
 
 print("All outputs saved to result/program6/")
@@ -787,7 +826,7 @@ print("All outputs saved to result/program6/")
 \end{subfigure}\hfill
 \begin{subfigure}[b]{0.31\textwidth}
   \centering
-  \includegraphics[width=\textwidth,height=2.4cm,keepaspectratio]{result/program6/zoomed.jpg}
+  \includegraphics[width=\textwidth,height=3cm,keepaspectratio]{result/program6/zoomed.jpg}
   \caption{Zoomed Image}
 \end{subfigure}
 \end{figure}
@@ -812,52 +851,58 @@ np.random.seed(42)
 
 os.makedirs("result/program7", exist_ok=True)
 
-# Find input image
-img = None
-for p in ["input.jpg", "result/program1/input.jpg", "result/program5/grayscale.jpg", "result/program5/input_img.jpg"]:
-    if os.path.exists(p):
-        img = cv2.imread(p, 0)
-        if img is not None:
-            break
+# Load input image
+img = cv2.imread("result/input.png", 0)
+if img is None:
+    for p in ["input.jpg", "result/program1/input.jpg", "result/program5/grayscale.jpg"]:
+        if os.path.exists(p):
+            img = cv2.imread(p, 0)
+            if img is not None:
+                break
 if img is None:
     img = np.zeros((256, 256), dtype=np.uint8)
     cv2.rectangle(img, (50, 50), (200, 200), 150, -1)
 
 cv2.imwrite("result/program7/original.jpg", img)
 
-# Salt & Pepper
-noisy_sp = img.copy().astype(np.float32)
+# a. Image restoration
+degraded = cv2.GaussianBlur(img, (5, 5), 1.5)
+noise = np.random.normal(0, 5, img.shape)
+degraded = np.clip(degraded.astype(float) + noise, 0, 255).astype(np.uint8)
+cv2.imwrite("result/program7/degraded.jpg", degraded)
+restored = wiener(degraded.astype(np.float32), mysize=5, noise=None)
+restored = np.clip(restored, 0, 255).astype(np.uint8)
+cv2.imwrite("result/program7/restored.jpg", restored)
+
+# b. Add and Remove Salt and pepper noise
+sp_noisy = img.copy()
 total = img.size
-s_vs_p = 0.5; amount = 0.05
-n_s = int(np.ceil(amount*total*s_vs_p)); n_p = int(np.ceil(amount*total*(1-s_vs_p)))
+n_s = int(0.05 * total * 0.5)
+n_p = int(0.05 * total * 0.5)
 for _ in range(n_s):
-    r,c = random.randint(0,img.shape[0]-1), random.randint(0,img.shape[1]-1)
-    noisy_sp[r,c]=255
+    r, c = random.randint(0, img.shape[0]-1), random.randint(0, img.shape[1]-1)
+    sp_noisy[r, c] = 255
 for _ in range(n_p):
-    r,c = random.randint(0,img.shape[0]-1), random.randint(0,img.shape[1]-1)
-    noisy_sp[r,c]=0
-noisy_sp = np.clip(noisy_sp,0,255).astype(np.uint8)
-cv2.imwrite("result/program7/salt_pepper_noisy.jpg", noisy_sp)
-med = cv2.medianBlur(noisy_sp,3)
-cv2.imwrite("result/program7/median_filtered.jpg", med)
+    r, c = random.randint(0, img.shape[0]-1), random.randint(0, img.shape[1]-1)
+    sp_noisy[r, c] = 0
+cv2.imwrite("result/program7/salt_pepper_noisy.jpg", sp_noisy)
+sp_removed = cv2.medianBlur(sp_noisy, 3)
+cv2.imwrite("result/program7/sp_removed.jpg", sp_removed)
 
-# Gaussian
-g = np.random.normal(0,10,img.shape)
-ng = np.clip(img.astype(float)+g,0,255).astype(np.uint8)
-cv2.imwrite("result/program7/gaussian_noisy.jpg", ng)
-gf = cv2.GaussianBlur(ng,(5,5),0)
-cv2.imwrite("result/program7/gaussian_filtered.jpg", gf)
+# c. Minimize Gaussian noise
+g_noisy = np.clip(img.astype(float) + np.random.normal(0, 10, img.shape), 0, 255).astype(np.uint8)
+cv2.imwrite("result/program7/gaussian_noisy.jpg", g_noisy)
 
-# Wiener filter (for Gaussian noise restoration)
-# scipy.signal.wiener applies adaptive Wiener filtering
-wiener_filtered = wiener(ng.astype(np.float32), mysize=5, noise=None)
-wiener_filtered = np.clip(wiener_filtered, 0, 255).astype(np.uint8)
-cv2.imwrite("result/program7/wiener_filtered.jpg", wiener_filtered)
+# Minimize Gaussian noise using Gaussian blur
+g_minimized = cv2.GaussianBlur(g_noisy, (5, 5), 0)
+cv2.imwrite("result/program7/gaussian_minimized.jpg", g_minimized)
 
-# Also apply Wiener filter to salt & pepper noise for comparison
-wiener_sp = wiener(noisy_sp.astype(np.float32), mysize=5, noise=None)
-wiener_sp = np.clip(wiener_sp, 0, 255).astype(np.uint8)
-cv2.imwrite("result/program7/wiener_sp_filtered.jpg", wiener_sp)
+# d. Median filter  on Salt & Pepper noise
+sp_median = cv2.medianBlur(sp_noisy, 3)
+cv2.imwrite("result/program7/sp_median.jpg", sp_median)
+# d. Wiener filter on Salt & Pepper noise
+sp_wiener = np.clip(wiener(sp_noisy.astype(np.float32), mysize=5, noise=None), 0, 255).astype(np.uint8)
+cv2.imwrite("result/program7/sp_wiener.jpg", sp_wiener)
 
 print("All outputs saved to result/program7/")
 \end{lstlisting}
@@ -874,39 +919,48 @@ print("All outputs saved to result/program7/")
 \end{subfigure}\hfill
 \begin{subfigure}[b]{0.31\textwidth}
   \centering
+  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program7/degraded.jpg}
+  \caption{Degraded Image}
+\end{subfigure}\hfill
+\begin{subfigure}[b]{0.31\textwidth}
+  \centering
+  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program7/restored.jpg}
+  \caption{Restored (Wiener)}
+\end{subfigure}
+\vspace{6pt}
+
+\begin{subfigure}[b]{0.31\textwidth}
+  \centering
   \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program7/salt_pepper_noisy.jpg}
   \caption{Salt \& Pepper Noise}
 \end{subfigure}\hfill
 \begin{subfigure}[b]{0.31\textwidth}
   \centering
-  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program7/median_filtered.jpg}
-  \caption{Median Filtered}
-\end{subfigure}
-
-\vspace{6pt}
-
+  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program7/sp_removed.jpg}
+  \caption{Salt \& Pepper Removed (Median)}
+\end{subfigure}\hfill
 \begin{subfigure}[b]{0.31\textwidth}
   \centering
   \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program7/gaussian_noisy.jpg}
   \caption{Gaussian Noise}
-\end{subfigure}\hfill
-\begin{subfigure}[b]{0.31\textwidth}
-  \centering
-  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program7/gaussian_filtered.jpg}
-  \caption{Gaussian Filtered}
-\end{subfigure}\hfill
-\begin{subfigure}[b]{0.31\textwidth}
-  \centering
-  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program7/wiener_filtered.jpg}
-  \caption{Wiener Filtered (Gaussian)}
 \end{subfigure}
 \vspace{6pt}
+
 \begin{subfigure}[b]{0.31\textwidth}
   \centering
- \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program7/wiener_sp_filtered.jpg}
-  \caption{Wiener Filtered (Salt \& Pepper)}
+  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program7/gaussian_minimized.jpg}
+  \caption{Gaussian Minimized (Blur)}
 \end{subfigure}\hfill
-
+\begin{subfigure}[b]{0.31\textwidth}
+  \centering
+  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program7/sp_median.jpg}
+  \caption{Median Filter}
+\end{subfigure}\hfill
+\begin{subfigure}[b]{0.31\textwidth}
+  \centering
+  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program7/sp_wiener.jpg}
+  \caption{Wiener Filter}
+\end{subfigure}
 \end{figure}
 
 
@@ -930,26 +984,27 @@ np.random.seed(42)
 os.makedirs("result/program8", exist_ok=True)
 
 # Load image
-img = None
-for p in ["input.jpg", "result/program1/input.jpg", "result/program5/grayscale.jpg"]:
-    if os.path.exists(p):
-        img = cv2.imread(p, 0)
-        if img is not None: break
+img = cv2.imread("result/input.png", 0)
+if img is None:
+    for p in ["input.jpg", "result/program1/input.jpg", "result/program5/grayscale.jpg"]:
+        if os.path.exists(p):
+            img = cv2.imread(p, 0)
+            if img is not None: break
 if img is None:
     img = np.zeros((128,128),dtype=np.uint8); cv2.rectangle(img,(20,20),(100,100),255,-1)
 
 cv2.imwrite("result/program8/original.jpg", img)
 imgf = img.astype(np.float32)
 
-# 1D conv
+# a. 1-D convolution
 k1 = np.array([1,2,1],dtype=np.float32)/4.0
 conv1d = np.convolve(imgf[0,:], k1, mode='same')
 
-# LP
+# b. 3x3 masks for low pass and high pass filters
 klp = np.ones((3,3),dtype=np.float32)/9.0
 lp = cv2.filter2D(imgf,-1,klp)
 cv2.imwrite("result/program8/low_pass.jpg", lp.astype(np.uint8))
-# HP
+
 khp = np.array([[-1,-1,-1],[-1,8,-1],[-1,-1,-1]],dtype=np.float32)
 hp = cv2.filter2D(imgf,-1,khp)
 hp = np.clip(hp,0,255).astype(np.uint8)
@@ -996,59 +1051,81 @@ import os
 
 os.makedirs("result/program9", exist_ok=True)
 
-img = None
-for p in ["input.jpg","result/program1/input.jpg","result/program5/grayscale.jpg"]:
-    if os.path.exists(p):
-        img = cv2.imread(p,0)
-        if img is not None: break
+img = cv2.imread("result/input.png", 0)
+if img is None:
+    for p in ["input.jpg","result/program1/input.jpg","result/program5/grayscale.jpg"]:
+        if os.path.exists(p):
+            img = cv2.imread(p,0)
+            if img is not None: break
 if img is None:
     img = np.zeros((256,256),dtype=np.uint8); cv2.rectangle(img,(50,50),(200,200),255,-1)
 
 cv2.imwrite("result/program9/original.jpg", img)
 
+# a. Apply FFT on given image
 f = np.fft.fft2(img); fshift = np.fft.fftshift(f)
 mag = 20*np.log(np.abs(fshift)+1e-10)
 mag = np.clip(mag,0,255).astype(np.uint8)
 cv2.imwrite("result/program9/magnitude_spectrum.png", mag)
 
+# b. Perform low pass and high pass filtering in frequency domain
 r,c = img.shape; cr,cc = r//2,c//2
 mask_lp = np.zeros((r,c),np.uint8); cv2.circle(mask_lp,(cc,cr),30,255,-1)
 mask_hp = cv2.bitwise_not(mask_lp)
 
 fsl = fshift*(mask_lp/255.0); fsh = fshift*(mask_hp/255.0)
+
+# c. Apply IFFT to reconstruct image
 il = np.abs(np.fft.ifft2(np.fft.ifftshift(fsl))); ih = np.abs(np.fft.ifft2(np.fft.ifftshift(fsh)))
 il = np.clip(il,0,255).astype(np.uint8); ih = np.clip(ih,0,255).astype(np.uint8)
 cv2.imwrite("result/program9/low_pass_filtered.jpg", il)
 cv2.imwrite("result/program9/high_pass_filtered.jpg", ih)
 
+# Save filter masks
+cv2.imwrite("result/program9/low_pass_mask.jpg", mask_lp)
+cv2.imwrite("result/program9/high_pass_mask.jpg", mask_hp)
+
 print("All outputs saved to result/program9/")
 \end{lstlisting}
 
 \vspace{8pt}
+\newpage
 \textbf{\large Output:}
 
 \begin{figure}[H]
 \centering
-\begin{subfigure}[b]{0.24\textwidth}
+\begin{subfigure}[b]{0.31\textwidth}
   \centering
   \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program9/original.jpg}
   \caption{Original Image}
 \end{subfigure}\hfill
-\begin{subfigure}[b]{0.24\textwidth}
+\begin{subfigure}[b]{0.31\textwidth}
   \centering
   \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program9/magnitude_spectrum.png}
   \caption{Magnitude Spectrum}
 \end{subfigure}\hfill
-\begin{subfigure}[b]{0.24\textwidth}
+\begin{subfigure}[b]{0.31\textwidth}
+  \centering
+  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program9/low_pass_mask.jpg}
+  \caption{Low Pass Mask}
+\end{subfigure}
+\vspace{6pt}
+
+\begin{subfigure}[b]{0.31\textwidth}
+  \centering
+  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program9/high_pass_mask.jpg}
+  \caption{High Pass Mask}
+\end{subfigure}\hfill
+\begin{subfigure}[b]{0.31\textwidth}
   \centering
   \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program9/low_pass_filtered.jpg}
   \caption{Low Pass Filtered}
-\end{subfigure}
-\begin{subfigure}[b]{0.24\textwidth}
+\end{subfigure}\hfill
+\begin{subfigure}[b]{0.31\textwidth}
   \centering
   \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program9/high_pass_filtered.jpg}
   \caption{High Pass Filtered}
-\end{subfigure}\hfill
+\end{subfigure}
 \end{figure}
 
 
@@ -1067,11 +1144,12 @@ import os
 
 os.makedirs("result/program10", exist_ok=True)
 
-img = None
-for p in ["input.jpg","result/program1/input.jpg","result/program5/grayscale.jpg"]:
-    if os.path.exists(p):
-        img = cv2.imread(p,0)
-        if img is not None: break
+img = cv2.imread("result/input.png", 0)
+if img is None:
+    for p in ["input.jpg","result/program1/input.jpg","result/program5/grayscale.jpg"]:
+        if os.path.exists(p):
+            img = cv2.imread(p,0)
+            if img is not None: break
 if img is None:
     img = np.zeros((256,256),dtype=np.uint8); cv2.rectangle(img,(50,50),(200,200),255,-1)
 
@@ -1091,6 +1169,12 @@ rx=np.array([[1,0],[0,-1]]); ry=np.array([[0,1],[-1,0]])
 rxv=cv2.filter2D(img,-1,rx); ryv=cv2.filter2D(img,-1,ry)
 rob = np.clip(np.hypot(rxv.astype(float),ryv.astype(float)),0,255).astype(np.uint8)
 
+# Gaussian (Laplacian of Gaussian - LoG)
+gaussian_blur = cv2.GaussianBlur(img, (5, 5), 1.4)
+log = cv2.Laplacian(gaussian_blur, cv2.CV_64F, ksize=3)
+log = np.clip(np.abs(log), 0, 255).astype(np.uint8)
+cv2.imwrite("result/program10/gaussian_log.jpg", log)
+
 # Canny
 can = cv2.Canny(img,50,150)
 cv2.imwrite("result/program10/sobel.jpg", sob)
@@ -1102,6 +1186,7 @@ print("All outputs saved to result/program10/")
 \end{lstlisting}
 
 \vspace{8pt}
+\newpage
 \textbf{\large Output:}
 
 \begin{figure}[H]
@@ -1134,6 +1219,11 @@ print("All outputs saved to result/program10/")
   \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program10/canny.jpg}
   \caption{Canny Edge Detection}
 \end{subfigure}\hfill
+\begin{subfigure}[b]{0.31\textwidth}
+  \centering
+  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program10/gaussian_log.jpg}
+  \caption{Gaussian Log}
+\end{subfigure}
 \end{figure}
 
 
@@ -1152,11 +1242,12 @@ import os
 
 os.makedirs("result/program11", exist_ok=True)
 
-img = None
-for p in ["input.jpg","result/program1/input.jpg","result/program5/grayscale.jpg"]:
-    if os.path.exists(p):
-        img = cv2.imread(p,0)
-        if img is not None: break
+img = cv2.imread("result/input.png", 0)
+if img is None:
+    for p in ["input.jpg","result/program1/input.jpg","result/program5/grayscale.jpg"]:
+        if os.path.exists(p):
+            img = cv2.imread(p,0)
+            if img is not None: break
 if img is None:
     img = np.zeros((200,200),dtype=np.uint8); cv2.putText(img,'DIP',(40,120),cv2.FONT_HERSHEY_SIMPLEX,2.5,255,5)
 
@@ -1165,12 +1256,8 @@ cv2.imwrite("result/program11/original.jpg", img)
 k = np.ones((5,5),np.uint8)
 er = cv2.erode(img,k,iterations=1)
 di = cv2.dilate(img,k,iterations=1)
-op = cv2.morphologyEx(img,cv2.MORPH_OPEN,k)
-cl = cv2.morphologyEx(img,cv2.MORPH_CLOSE,k)
 cv2.imwrite("result/program11/erosion.jpg", er)
 cv2.imwrite("result/program11/dilation.jpg", di)
-cv2.imwrite("result/program11/opening.jpg", op)
-cv2.imwrite("result/program11/closing.jpg", cl)
 
 print("All outputs saved to result/program11/")
 \end{lstlisting}
@@ -1195,19 +1282,6 @@ print("All outputs saved to result/program11/")
   \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program11/dilation.jpg}
   \caption{Dilation}
 \end{subfigure}
-
-\vspace{6pt}
-
-\begin{subfigure}[b]{0.31\textwidth}
-  \centering
-  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program11/opening.jpg}
-  \caption{Opening}
-\end{subfigure}\hfill
-\begin{subfigure}[b]{0.31\textwidth}
-  \centering
-  \includegraphics[width=\textwidth,height=3.3cm,keepaspectratio]{result/program11/closing.jpg}
-  \caption{Morphological Closing}
-\end{subfigure}\hfill
 \end{figure}
 
 \end{document}

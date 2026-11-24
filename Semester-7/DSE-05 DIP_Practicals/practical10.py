@@ -8,11 +8,12 @@ import os
 
 os.makedirs("result/program10", exist_ok=True)
 
-img = None
-for p in ["input.jpg","result/program1/input.jpg","result/program5/grayscale.jpg"]:
-    if os.path.exists(p):
-        img = cv2.imread(p,0)
-        if img is not None: break
+img = cv2.imread("result/input.png", 0)  # Load as grayscale
+if img is None:
+    for p in ["input.jpg","result/program1/input.jpg","result/program5/grayscale.jpg"]:
+        if os.path.exists(p):
+            img = cv2.imread(p,0)
+            if img is not None: break
 if img is None:
     img = np.zeros((256,256),dtype=np.uint8); cv2.rectangle(img,(50,50),(200,200),255,-1)
 
@@ -31,6 +32,13 @@ pre = np.clip(np.hypot(px.astype(float),py.astype(float)),0,255).astype(np.uint8
 rx=np.array([[1,0],[0,-1]]); ry=np.array([[0,1],[-1,0]])
 rxv=cv2.filter2D(img,-1,rx); ryv=cv2.filter2D(img,-1,ry)
 rob = np.clip(np.hypot(rxv.astype(float),ryv.astype(float)),0,255).astype(np.uint8)
+
+# Gaussian (Laplacian of Gaussian - LoG)
+# First apply Gaussian blur, then Laplacian
+gaussian_blur = cv2.GaussianBlur(img, (5, 5), 1.4)
+log = cv2.Laplacian(gaussian_blur, cv2.CV_64F, ksize=3)
+log = np.clip(np.abs(log), 0, 255).astype(np.uint8)
+cv2.imwrite("result/program10/gaussian_log.jpg", log)
 
 # Canny
 can = cv2.Canny(img,50,150)

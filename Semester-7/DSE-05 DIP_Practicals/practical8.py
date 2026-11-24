@@ -14,11 +14,12 @@ np.random.seed(42)
 os.makedirs("result/program8", exist_ok=True)
 
 # Load image
-img = None
-for p in ["input.jpg", "result/program1/input.jpg", "result/program5/grayscale.jpg"]:
-    if os.path.exists(p):
-        img = cv2.imread(p, 0)
-        if img is not None: break
+img = cv2.imread("result/input.png", 0)  # Load as grayscale
+if img is None:
+    for p in ["input.jpg", "result/program1/input.jpg", "result/program5/grayscale.jpg"]:
+        if os.path.exists(p):
+            img = cv2.imread(p, 0)
+            if img is not None: break
 if img is None:
     img = np.zeros((128,128),dtype=np.uint8); cv2.rectangle(img,(20,20),(100,100),255,-1)
 

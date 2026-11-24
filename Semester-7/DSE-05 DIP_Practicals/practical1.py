@@ -16,10 +16,13 @@ import os
 # Create result directory
 os.makedirs("result/program1", exist_ok=True)
 
-# Generate a sample image
-img = np.zeros((300, 300, 3), dtype=np.uint8)
-img[50:250, 50:250] = [0, 0, 255]  # Blue square
-img[100:200, 100:200] = [0, 255, 0]  # Green square
+# Load input image
+img = cv2.imread("result/input.png")
+if img is None:
+    # Fallback: generate a sample image
+    img = np.zeros((300, 300, 3), dtype=np.uint8)
+    img[50:250, 50:250] = [0, 0, 255]  # Blue square
+    img[100:200, 100:200] = [0, 255, 0]  # Green square
 cv2.imwrite("result/program1/input.jpg", img)
 
 # a. Read and display image
